@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vpn_basic_project/controllers/home_controller.dart';
 import 'package:vpn_basic_project/helper/app_helper.dart';
 import 'package:vpn_basic_project/main.dart';
 import 'package:vpn_basic_project/widgets/home/custom_widget.dart';
@@ -7,8 +8,8 @@ import 'package:vpn_basic_project/widgets/home/location_selection_bottom_navigat
 import 'package:vpn_basic_project/widgets/home/vpn_button.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+  HomeScreen({super.key});
+  final homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     sizeScreen = MediaQuery.sizeOf(context);
@@ -38,20 +39,31 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomWidget(
-                title: "Location",
+                title: homeController.vpnInfo.value.countryLongName.isEmpty
+                    ? "Location"
+                    : homeController.vpnInfo.value.countryLongName,
                 subTitle: "Free",
                 shape: CircleAvatar(
                   radius: 33.0,
                   backgroundColor: Colors.redAccent,
-                  child: Icon(
-                    Icons.flag_circle,
-                    size: 30.0,
-                    color: Colors.white,
-                  ),
+                  child: homeController.vpnInfo.value.countryLongName.isEmpty
+                      ? Icon(
+                          Icons.flag_circle,
+                          size: 30.0,
+                          color: Colors.white,
+                        )
+                      : null,
+                  backgroundImage: homeController
+                          .vpnInfo.value.countryLongName.isEmpty
+                      ? null
+                      : AssetImage(
+                          "assets/images/countryFlags/${homeController.vpnInfo.value.countryShortName}.png"),
                 ),
               ),
               CustomWidget(
-                title: "60 ms",
+                title: homeController.vpnInfo.value.countryLongName.isEmpty
+                    ? "60 ms"
+                    : "${homeController.vpnInfo.value.ping} ms",
                 subTitle: "Ping",
                 shape: CircleAvatar(
                   radius: 33.0,
