@@ -34,4 +34,26 @@ class HomeController extends GetxController {
       await VpnEngine.startVpnNow(vpnConfiguration);
     }
   }
+
+  Color get getVpnButtonColor {
+    switch (vpnConnectionState.value) {
+      case VpnEngine.vpnDisconnectedNow:
+        return Colors.redAccent;
+      case VpnEngine.vpnConnectedNow:
+        return Colors.green;
+      default:
+        return Colors.orangeAccent;
+    }
+  }
+
+  String get getVpnButtonText {
+    switch (vpnConnectionState.value) {
+      case VpnEngine.vpnDisconnectedNow:
+        return "Let's Connect";
+      case VpnEngine.vpnConnectedNow:
+        return "Disconnected";
+      default:
+        return "Connection...";
+    }
+  }
 }
