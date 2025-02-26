@@ -1,6 +1,4 @@
-# untitled
-
-Open VPN App
+# Open VPN App
 
 ## Getting Started
 
