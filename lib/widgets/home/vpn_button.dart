@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_basic_project/controllers/home_controller.dart';
 import 'package:vpn_basic_project/main.dart';
 
 class VpnButton extends StatelessWidget {
-  const VpnButton({super.key});
+  const VpnButton({super.key, required this.homeController});
+  final HomeController homeController;
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +19,20 @@ class VpnButton extends StatelessWidget {
               padding: EdgeInsets.all(18.0),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.redAccent[100],
+                color: homeController.getVpnButtonColor.withValues(alpha: 0.1),
               ),
               child: Container(
                 padding: EdgeInsets.all(18.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.redAccent[200],
+                  color: homeController.getVpnButtonColor.withValues(alpha: 0.3),
                 ),
                 child: Container(
                   width: sizeScreen.width * 0.24,
                   height: sizeScreen.height * 0.24,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.redAccent[400],
+                    color: homeController.getVpnButtonColor,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +44,7 @@ class VpnButton extends StatelessWidget {
                       ),
                       const SizedBox(height: 6.0),
                       Text(
-                        "Let's Connect",
+                        homeController.getVpnButtonText,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12.0,
