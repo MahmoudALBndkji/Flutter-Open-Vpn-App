@@ -32,6 +32,8 @@ class HomeController extends GetxController {
         config: configuration,
       );
       await VpnEngine.startVpnNow(vpnConfiguration);
+    } else {
+      await VpnEngine.stopVpnNow();
     }
   }
 

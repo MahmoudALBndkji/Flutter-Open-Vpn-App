@@ -13,7 +13,10 @@ class VpnButton extends StatelessWidget {
     return Semantics(
       button: true,
       child: InkWell(
-        onTap: () {},
+        borderRadius: BorderRadius.circular(100.0),
+        onTap: () {
+          homeController.connectionToVpnNow();
+        },
         child: Column(
           children: [
             Obx(() => Container(

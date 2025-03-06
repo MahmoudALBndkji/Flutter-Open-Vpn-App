@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vpn_basic_project/controllers/home_controller.dart';
+import 'package:vpn_basic_project/helper/app_helper.dart';
 import 'package:vpn_basic_project/helper/format_speed_byte.dart';
+import 'package:vpn_basic_project/helper/vpn-engine/vpn_engine.dart';
 import 'package:vpn_basic_project/main.dart';
 import 'package:vpn_basic_project/models/vpn_info_model.dart';
 
@@ -10,6 +14,7 @@ class VpnLocationCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.find<HomeController>();
     sizeScreen = MediaQuery.sizeOf(context);
     return Card(
       elevation: 6,
@@ -18,7 +23,21 @@ class VpnLocationCardItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          homeController.vpnInfo.value = vpnInfo;
+          AppHelper.vpnInfoObejct = vpnInfo;
+          Get.back();
+          if (homeController.vpnConnectionState.value ==
+              VpnEngine.vpnConnectedNow) {
+            VpnEngine.stopVpnNow();
+            Future.delayed(
+              Duration(seconds: 3),
+              () => homeController.connectionToVpnNow(),
+            );
+          } else {
+            homeController.connectionToVpnNow();
+          }
+        },
         borderRadius: BorderRadius.circular(16.0),
         child: ListTile(
           shape: RoundedRectangleBorder(
