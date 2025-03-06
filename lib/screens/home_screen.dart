@@ -15,6 +15,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     sizeScreen = MediaQuery.sizeOf(context);
+    VpnEngine.snapshotVpnStage().listen((event) {
+      homeController.vpnConnectionState.value = event;
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
@@ -60,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                             .vpnInfo.value.countryLongName.isEmpty
                         ? null
                         : AssetImage(
-                            "assets/images/countryFlags/${homeController.vpnInfo.value.countryShortName}.png"),
+                            "assets/images/countryFlags/${homeController.vpnInfo.value.countryShortName.toLowerCase()}.png"),
                   ),
                 ),
                 CustomWidget(
@@ -81,7 +84,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          Obx(() => VpnButton(homeController: homeController)),
+          VpnButton(),
           StreamBuilder<VpnStatusModel?>(
             initialData: VpnStatusModel(),
             stream: VpnEngine.snapshotVpnStatus(),

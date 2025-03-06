@@ -1,9 +1,11 @@
 class VpnInfoModel {
   late final String hostName,
+      ip,
+      ping,
       countryLongName,
       countryShortName,
       base64OpenVpnConfigurationData;
-  late final int ip, ping, speed, vpnSessionNum;
+  late final int speed, vpnSessionNum;
 
   VpnInfoModel({
     required this.ip,
@@ -18,14 +20,14 @@ class VpnInfoModel {
 
   factory VpnInfoModel.fromJson(Map<String, dynamic> json) {
     return VpnInfoModel(
-      ip: json['IP'] ?? 0,
-      ping: json['Ping'] ?? 0,
+      ip: json['IP'] ?? "",
+      ping: json['Ping'].toString() ?? "",
       speed: json['Speed'] ?? 0,
-      hostName: json['HostName'] ?? " ",
+      hostName: json['HostName'] ?? "",
       vpnSessionNum: json['NumVpnSessions'] ?? 0,
-      countryLongName: json['CountryLong'] ?? " ",
-      countryShortName: json['CountryShort'] ?? " ",
-      base64OpenVpnConfigurationData: json['OpenVPN_ConfigData_Base64'] ?? " ",
+      countryLongName: json['CountryLong'] ?? "",
+      countryShortName: json['CountryShort'] ?? "",
+      base64OpenVpnConfigurationData: json['OpenVPN_ConfigData_Base64'] ?? "",
     );
   }
 
