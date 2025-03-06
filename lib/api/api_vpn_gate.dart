@@ -22,7 +22,7 @@ class ApiVpnGate {
       for (int counter = 1; counter < listData.length - 1; counter++) {
         Map<String, dynamic> jsonData = {};
         for (int innerCounter = 0;
-            innerCounter < header.length - 1;
+            innerCounter < header.length;
             innerCounter++) {
           jsonData.addAll({
             header[innerCounter].toString(): listData[counter][innerCounter]
