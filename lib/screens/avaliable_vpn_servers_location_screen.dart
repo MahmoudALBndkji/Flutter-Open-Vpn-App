@@ -22,6 +22,9 @@ class AvaliableVpnServersLocationScreen extends StatelessWidget {
           title: Text(
             "VPN Location ( ${vpnLocationController.vpnFreeServerAvaliableList.length} )",
           ),
+          actions: [
+            ChangeThemeButton(),
+          ],
         ),
         body: vpnLocationController.isLoadingNewLocation.value
             ? LoadingWidget()

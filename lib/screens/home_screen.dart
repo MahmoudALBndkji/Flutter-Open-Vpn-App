@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vpn_basic_project/controllers/home_controller.dart';
-import 'package:vpn_basic_project/helper/app_helper.dart';
+import 'package:vpn_basic_project/helper/change_theme_button.dart';
 import 'package:vpn_basic_project/helper/vpn-engine/vpn_engine.dart';
 import 'package:vpn_basic_project/main.dart';
 import 'package:vpn_basic_project/models/vpn_status_model.dart';
@@ -27,14 +27,7 @@ class HomeScreen extends StatelessWidget {
           icon: Icon(Icons.perm_device_info),
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              Get.changeThemeMode(
-                  AppHelper.isModeDark ? ThemeMode.light : ThemeMode.dark);
-              AppHelper.isModeDark = !AppHelper.isModeDark;
-            },
-            icon: Icon(Icons.brightness_2_outlined),
-          ),
+          ChangeThemeButton(),
         ],
       ),
       body: Column(
