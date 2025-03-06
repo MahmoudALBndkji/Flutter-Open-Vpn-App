@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:vpn_basic_project/screens/avaliable_vpn_servers_location_screen.dart';
 
 class LocationSelectionBottomNavigation extends StatelessWidget {
   const LocationSelectionBottomNavigation({super.key});
@@ -9,7 +11,7 @@ class LocationSelectionBottomNavigation extends StatelessWidget {
       child: Semantics(
         button: true,
         child: InkWell(
-          onTap: () {},
+          onTap: () => Get.to(() => AvaliableVpnServersLocationScreen()),
           child: Container(
             color: Colors.redAccent,
             // padding: EdgeInsets.symmetric(horizontal: sizeScreen.width * 0.41),
