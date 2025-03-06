@@ -1,7 +1,7 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:hive_flutter/adapters.dart';
-import 'package:vpn_basic_project/models/vpn_info_model.dart';
+import "package:hive_flutter/adapters.dart";
+import "package:vpn_basic_project/models/vpn_info_model.dart";
 
 class AppHelper {
   static late Box boxOfData;
@@ -11,21 +11,21 @@ class AppHelper {
   }
 
   // Saving User Choice About Theme Selection
-  static set isModeDark(bool value) => boxOfData.put('isModeDark', value);
+  static set isModeDark(bool value) => boxOfData.put("isModeDark", value);
 
-  static bool get isModeDark => boxOfData.get('isModeDark') ?? false;
+  static bool get isModeDark => boxOfData.get("isModeDark") ?? false;
 
   // For Saving Single Selected VPN Details
   static VpnInfoModel get vpnInfoObejct =>
-      VpnInfoModel.fromJson(boxOfData.get('vpn') ?? '{}');
+      VpnInfoModel.fromJson(jsonDecode((boxOfData.get("vpn") ?? "{}")));
 
   static set vpnInfoObejct(VpnInfoModel value) =>
-      boxOfData.put('vpn', jsonEncode(value));
+      boxOfData.put("vpn", jsonEncode(value));
 
   // For Saving All VPN Servers Details
   static List<VpnInfoModel> get vpnList {
     List<VpnInfoModel> tempVpnList = [];
-    final dataVpn = jsonDecode(boxOfData.get('vpnList') ?? '[]');
+    final dataVpn = jsonDecode(boxOfData.get("vpnList") ?? "[]");
     for (var data in dataVpn) {
       tempVpnList.add(VpnInfoModel.fromJson(data));
     }
@@ -33,5 +33,5 @@ class AppHelper {
   }
 
   static set vpnList(List<VpnInfoModel> valueList) =>
-      boxOfData.put('vpnList', jsonEncode(valueList));
+      boxOfData.put("vpnList", jsonEncode(valueList));
 }
