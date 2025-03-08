@@ -21,7 +21,7 @@ class VpnInfoModel {
   factory VpnInfoModel.fromJson(Map<String, dynamic> json) {
     return VpnInfoModel(
       ip: json['IP'] ?? "",
-      ping: json['Ping'].toString() ?? "",
+      ping: json['Ping'].toString(),
       speed: json['Speed'] ?? 0,
       hostName: json['HostName'] ?? "",
       vpnSessionNum: json['NumVpnSessions'] ?? 0,

@@ -23,9 +23,9 @@ class IpInfoModel {
       regionName: json['region'] ?? '',
       cityName: json['city'] ?? '',
       zipCode: json['zip'] ?? '',
-      timeZone: json['timezone'] ?? '',
-      internetServiceProvider: json['isp'] ?? '',
-      query: json['query'] ?? '',
+      timeZone: json['timezone'] ?? 'Unkown',
+      internetServiceProvider: json['isp'] ?? 'Unkown',
+      query: json['query'] ?? 'Not Avaliable',
     );
   }
 }
