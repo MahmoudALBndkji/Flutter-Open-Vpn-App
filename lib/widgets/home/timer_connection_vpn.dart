@@ -53,7 +53,7 @@ class _TimerConnectionVpnState extends State<TimerConnectionVpn> {
 
     return Text(
       "$hours : $minutes : $seconds",
-      style: TextStyle(fontSize: 23.0),
+      style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
     );
   }
 }
