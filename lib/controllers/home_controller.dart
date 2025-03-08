@@ -6,6 +6,7 @@ import 'package:vpn_basic_project/helper/app_helper.dart';
 import 'package:vpn_basic_project/helper/vpn-engine/vpn_engine.dart';
 import 'package:vpn_basic_project/models/vpn_configuration_model.dart';
 import 'package:vpn_basic_project/models/vpn_info_model.dart';
+import 'package:vpn_basic_project/screens/avaliable_vpn_servers_location_screen.dart';
 
 class HomeController extends GetxController {
   // Rx => Mean Monitor changes so that any change is identified.
@@ -16,6 +17,7 @@ class HomeController extends GetxController {
 
   void connectionToVpnNow() async {
     if (vpnInfo.value.base64OpenVpnConfigurationData.isEmpty) {
+      Get.to(() => AvaliableVpnServersLocationScreen());
       Get.snackbar(
           "Country / Location", "Please Select Country / Location First");
       return;
