@@ -34,6 +34,14 @@ class _TimerConnectionVpnState extends State<TimerConnectionVpn> {
   }
 
   @override
+  void dispose() {
+    timer?.cancel();
+    timer = null;
+    duration = Duration();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (timer == null || !widget.initTimerNow) {
       widget.initTimerNow ? startTimerNow() : stopTimerNow();
