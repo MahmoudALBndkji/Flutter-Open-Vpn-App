@@ -8,7 +8,7 @@ import 'package:vpn_basic_project/models/vpn_status_model.dart';
 import 'package:vpn_basic_project/screens/connected_network_ip_info_screen.dart';
 import 'package:vpn_basic_project/widgets/home/custom_widget.dart';
 import 'package:vpn_basic_project/widgets/home/location_selection_bottom_navigation.dart';
-import 'package:vpn_basic_project/widgets/home/vpn_button.dart';
+import 'package:vpn_basic_project/widgets/home/vpn_connection_panel.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          VpnButton(),
+          VpnConnectionPanel(),
           StreamBuilder<VpnStatusModel?>(
             initialData: VpnStatusModel(),
             stream: VpnEngine.snapshotVpnStatus(),
